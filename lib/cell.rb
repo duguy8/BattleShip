@@ -1,10 +1,23 @@
 class Cell
-  attr_reader :cell_number, :empty, :ships
+  attr_reader :cell_number,
+              :empty,
+              :ships,
+              :fired_upon
 
   def initialize(cell_number)
     @cell_number = cell_number
     @empty = true
     @ships = []
+    @fired_upon = false
+  end
+
+  def fire_upon
+    ship.hit
+    @fired_upon = true
+  end
+
+  def fired_upon?
+    fired_upon
   end
 
   def not_empty
@@ -18,10 +31,11 @@ class Cell
   def ship
     if empty == true
       nil
-    else
-      ships.shift
+    elsif empty == false
+      ships[0]
       #might not work later in Iteration 2
     end
+
   end
 
   def empty?
@@ -30,7 +44,6 @@ class Cell
 
   def place_ship(cruiser)
     ships << cruiser
-    # require 'pry'; binding.pry
     not_empty
   end
 end
