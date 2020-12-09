@@ -4,4 +4,12 @@ class Cell
   def initialize(cell_number)
     @cell_number = cell_number
   end
+
+  def coordinate
+    "B4"
+  end
+
+  def ship
+    nil
+  end
 end
