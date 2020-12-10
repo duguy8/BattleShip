@@ -73,7 +73,7 @@ class CellTest < MiniTest::Test
   end
 
   def test_place_ship_and_render_cell_2
-    skip
+    # skip
     cell_2 = Cell.new("C3")
     cruiser = Ship.new("Cruiser", 3)
     cell_2.place_ship(cruiser)
@@ -82,7 +82,7 @@ class CellTest < MiniTest::Test
   end
 
   def test_place_ship_and_render_cell_2_after_fired_upon
-    skip
+    # skip
     cell_2 = Cell.new("C3")
     cruiser = Ship.new("Cruiser", 3)
     cell_2.place_ship(cruiser)
@@ -93,7 +93,7 @@ class CellTest < MiniTest::Test
   end
 
   def test_ship_has_not_sunk
-    skip
+    # skip
     cell_2 = Cell.new("C3")
     cruiser = Ship.new("Cruiser", 3)
     cell_2.place_ship(cruiser)
@@ -105,7 +105,7 @@ class CellTest < MiniTest::Test
   end
 
   def test_ship_sinks_and_get_an_X
-    skip
+    # skip
     cell_2 = Cell.new("C3")
     cruiser = Ship.new("Cruiser", 3)
     cell_2.place_ship(cruiser)
@@ -115,7 +115,7 @@ class CellTest < MiniTest::Test
     cell_2.render
     cruiser.hit
     cruiser.hit
-    require 'pry'; binding.pry
+    # require 'pry'; binding.pry
     assert_equal true, cruiser.sunk?
     assert_equal "X", cell_2.render
   end
