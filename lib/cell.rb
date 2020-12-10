@@ -14,9 +14,24 @@ class Cell
     @fired_upon = false
   end
 
+  def render(rendered = true)
+    if @fired_upon == true && @ships.length == 0
+      "M"
+    elsif @fired_upon == true && @ships.length == 1
+      "H"
+    elsif @ships.length == 1
+      "S"
+    else
+      "."
+    end
+  end
+
   def fire_upon
-    ship.hit
     @fired_upon = true
+    if @ships.length >= 1
+      ship.hit
+    else
+    end
   end
 
   def fired_upon?
