@@ -14,7 +14,8 @@ class CellTest < MiniTest::Test
   def test_you_can_place_ship
     #skip
     cell = Cell.new("B4")
-    cruiser = Ship.new("Cruiser", 3)
+    # cruiser = Ship.new("Cruiser", 3)
+    # cruiser not needed for this test, better for speed
     assert_equal "B4", cell.coordinate
   end
 
@@ -42,84 +43,81 @@ class CellTest < MiniTest::Test
   end
 
   def test_if_ship_has_been_fired_upon
-    # skip
+    #skip
     cell = Cell.new("B4")
     cruiser = Ship.new("Cruiser", 3)
     cell.place_ship(cruiser)
     refute cell.fired_upon?
   end
 
-#
   def test_if_ship_has_been_fired_upon
-    # skip
+    #skip
     cell = Cell.new("B4")
     cruiser = Ship.new("Cruiser", 3)
     cell.place_ship(cruiser)
     cell.fire_upon
-    # require "pry"; binding.pry
+    #require "pry"; binding.pry
     assert_equal 2, cell.ship.health
     assert_equal true, cell.fired_upon?
   end
+
+  def test_cell_1_render
+    skip
+    cell_1 = Cell.new("B4")
+    assert_equal ".", cell_1.render
+  end
+
+  def test_cell_1_render_after_fired_upon
+    skip
+    cell_1 = Cell.new("B4")
+    cell_1.fire_upon
+    assert_equal "M", cell_1.render
+  end
+
+  def test_place_ship_and_render_cell_2
+    skip
+    cell_2 = Cell.new("C3")
+    cruiser = Ship.new("Cruiser", 3)
+    cell_2.place_ship(cruiser)
+    cell_2.render
+    assert_equal "S", cell_2.render(true)
+  end
+
+  def test_place_ship_and_render_cell_2_after_fired_upon
+    skip
+    cell_2 = Cell.new("C3")
+    cruiser = Ship.new("Cruiser", 3)
+    cell_2.place_ship(cruiser)
+    cell_2.render
+    cell_2.render(true)
+    cell_2.fire_upon
+    assert_equal "H", cell_2.render
+  end
+
+  def test_ship_has_not_sunk
+    skip
+    cell_2 = Cell.new("C3")
+    cruiser = Ship.new("Cruiser", 3)
+    cell_2.place_ship(cruiser)
+    cell_2.render
+    cell_2.render(true)
+    cell_2.fire_upon
+    cell_2.render
+    assert_equal false, cruiser.sunk?
+  end
+
+  def test_ship_sinks_and_get_an_X
+    skip
+    cell_2 = Cell.new("C3")
+    cruiser = Ship.new("Cruiser", 3)
+    cell_2.place_ship(cruiser)
+    cell_2.render
+    cell_2.render(true)
+    cell_2.fire_upon
+    cell_2.render
+    cruiser.hit
+    cruiser.hit
+    assert_equal true, cruiser.sunk?
+    assert_equal "X", cell_2.render
+  end
 end
-#
-#   def test_cell_1_render
-#     skip
-#     cell_1 = Cell.new("B4")
-#     assert_equal ".", cell_1.render
-#   end
-#
-#   def test_cell_1_render_after_fired_upon
-#     skip
-#     cell_1 = Cell.new("B4")
-#     cell_1.fire_upon
-#     assert_equal "M", cell_1.render
-#   end
-#
-#   def test_place_ship_and_render_cell_2
-#     skip
-#     cell_2 = Cell.new("C3")
-#     cruiser = Ship.new("Cruiser", 3)
-#     cell_2.place_ship(cruiser)
-#     cell_2.render
-#     assert_equal "S", cell_2.render(true)
-#   end
-#
-#   def test_place_ship_and_render_cell_2_after_fired_upon
-#     skip
-#     cell_2 = Cell.new("C3")
-#     cruiser = Ship.new("Cruiser", 3)
-#     cell_2.place_ship(cruiser)
-#     cell_2.render
-#     cell_2.render(true)
-#     cell_2.fire_upon
-#     assert_equal "H", cell_2.render
-#   end
-#
-#   def test_ship_has_not_sunk
-#     skip
-#     cell_2 = Cell.new("C3")
-#     cruiser = Ship.new("Cruiser", 3)
-#     cell_2.place_ship(cruiser)
-#     cell_2.render
-#     cell_2.render(true)
-#     cell_2.fire_upon
-#     cell_2.render
-#     assert_equal false, cruiser.sunk?
-#   end
-#
-#   def test_ship_sinks_and_get_an_X
-#     skip
-#     cell_2 = Cell.new("C3")
-#     cruiser = Ship.new("Cruiser", 3)
-#     cell_2.place_ship(cruiser)
-#     cell_2.render
-#     cell_2.render(true)
-#     cell_2.fire_upon
-#     cell_2.render
-#     cruiser.hit
-#     cruiser.hit
-#     assert_equal true, cruiser.sunk?
-#     assert_equal "X", cell_2.render
-#   end
-#
-# end

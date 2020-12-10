@@ -1,13 +1,16 @@
 class Cell
-  attr_reader :cell_number,
+  attr_reader :coordinate,
               :empty,
               :ships,
               :fired_upon
 
-  def initialize(cell_number)
-    @cell_number = cell_number
+  def initialize(cell_coordinate)
+    @coordinate = cell_coordinate
+    # cell_coordinate instead of cell_number
     @empty = true
     @ships = []
+    # Mentor had something to say about this being an array... we should look
+    # into it
     @fired_upon = false
   end
 
@@ -24,16 +27,17 @@ class Cell
     @empty = false
   end
 
-  def coordinate
-    "B4"
-  end
+  # def coordinate
+  #   cell_number
+  # end
+  # coordinate switched to attr_reader
 
   def ship
-    if empty == true
+    if @empty == true
       nil
-    elsif empty == false
-      ships[0]
-      #might not work later in Iteration 2
+    else
+      @ships[0]
+      # might not work later in Iteration 2
     end
 
   end
