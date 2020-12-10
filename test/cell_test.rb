@@ -42,40 +42,38 @@ class CellTest < MiniTest::Test
     assert_equal cruiser, cell.ship
   end
 
-  def test_if_ship_has_been_fired_upon
-    #skip
+  def test_if_ship_has_been_fired_upon_false
     cell = Cell.new("B4")
     cruiser = Ship.new("Cruiser", 3)
     cell.place_ship(cruiser)
-    refute cell.fired_upon?
+    assert_equal false, cell.fired_upon?
   end
 
-  def test_if_ship_has_been_fired_upon
+  def test_if_ship_has_been_fired_upon_true
     #skip
     cell = Cell.new("B4")
     cruiser = Ship.new("Cruiser", 3)
     cell.place_ship(cruiser)
     cell.fire_upon
-    #require "pry"; binding.pry
     assert_equal 2, cell.ship.health
     assert_equal true, cell.fired_upon?
   end
 
   def test_cell_1_render
-    # skip
+    #skip
     cell_1 = Cell.new("B4")
     assert_equal ".", cell_1.render
   end
 
   def test_cell_1_render_after_fired_upon
-    # skip
+    #skip
     cell_1 = Cell.new("B4")
     cell_1.fire_upon
     assert_equal "M", cell_1.render
   end
 
   def test_place_ship_and_render_cell_2
-    # skip
+    skip
     cell_2 = Cell.new("C3")
     cruiser = Ship.new("Cruiser", 3)
     cell_2.place_ship(cruiser)
@@ -84,7 +82,7 @@ class CellTest < MiniTest::Test
   end
 
   def test_place_ship_and_render_cell_2_after_fired_upon
-    # skip
+    skip
     cell_2 = Cell.new("C3")
     cruiser = Ship.new("Cruiser", 3)
     cell_2.place_ship(cruiser)
@@ -95,7 +93,7 @@ class CellTest < MiniTest::Test
   end
 
   def test_ship_has_not_sunk
-    # skip
+    skip
     cell_2 = Cell.new("C3")
     cruiser = Ship.new("Cruiser", 3)
     cell_2.place_ship(cruiser)
@@ -117,6 +115,7 @@ class CellTest < MiniTest::Test
     cell_2.render
     cruiser.hit
     cruiser.hit
+    require 'pry'; binding.pry
     assert_equal true, cruiser.sunk?
     assert_equal "X", cell_2.render
   end
