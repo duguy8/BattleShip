@@ -13,8 +13,8 @@ class BoardTest < MiniTest::Test
   def test_board_has_16_cells
     #skip
     board = Board.new
-    assert_equal 16, board.cells.size
-    #count is an array method, size is for hashes
+    assert_equal 16, board.cells.count
+  # require 'pry'; binding.pry
   end
 
   def test_valid_coordinate_a1
@@ -48,7 +48,7 @@ class BoardTest < MiniTest::Test
   end
 
   def test_for_valid_placement_1
-    skip
+    #skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
@@ -56,7 +56,7 @@ class BoardTest < MiniTest::Test
   end
 
   def test_for_valid_placement_2
-    skip
+    #skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
@@ -64,7 +64,7 @@ class BoardTest < MiniTest::Test
   end
 
   def test_coordinates_are_consecutive_1
-    skip
+    # skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
@@ -72,7 +72,7 @@ class BoardTest < MiniTest::Test
   end
 
   def test_coordinates_are_consecutive_2
-    skip
+    # skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
@@ -88,7 +88,7 @@ class BoardTest < MiniTest::Test
   end
 
   def test_coordinates_are_consecutive_4
-    skip
+    # skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
@@ -96,7 +96,7 @@ class BoardTest < MiniTest::Test
   end
 
   def test_coordinates_cannot_be_diagonal_1
-    skip
+    # skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
@@ -104,7 +104,7 @@ class BoardTest < MiniTest::Test
   end
 
   def test_coordinates_cannot_be_diagonal_2
-    skip
+    # skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
@@ -112,7 +112,7 @@ class BoardTest < MiniTest::Test
   end
 
   def test_that_placement_is_valid_1
-    skip
+    # skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
@@ -120,7 +120,7 @@ class BoardTest < MiniTest::Test
   end
 
   def test_that_placement_is_valid_2
-    skip
+    # skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
@@ -128,7 +128,7 @@ class BoardTest < MiniTest::Test
   end
 
   def test_ship_3_equals_ship_2
-    skip
+    # skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     board.place(cruiser, ["A1", "A2", "A3"])
