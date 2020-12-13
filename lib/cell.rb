@@ -1,12 +1,13 @@
 class Cell
   attr_reader :coordinate,
               :empty,
-              :ship,
-              :fired_upon
+              :fired_upon,
+              :ship
+
+  # attr_accessor :ship
 
   def initialize(cell_coordinate)
     @coordinate = cell_coordinate
-    # cell_coordinate instead of cell_number
     @empty = true
     @ship = ship
     @fired_upon = false
@@ -47,8 +48,8 @@ class Cell
     empty
   end
 
-  def place_ship(cruiser)
-    @ship = cruiser
+  def place_ship(ship_name)
     not_empty
+    @ship = ship_name
   end
 end
