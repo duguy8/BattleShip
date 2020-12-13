@@ -5,19 +5,6 @@ class Board
     @key_letter = ["A", "B", "C", "D"]
     @key_number = ["1", "2", "3", "4"]
     @cells = make_board
-<<<<<<< HEAD
-  end
-
-  def place(cruiser, coordinates)
-   @cells.map do |key, value|
-     coordinates.map do |coordinate|
-       @cells[coordinate].place_ship(cruiser)
-      end
-    end
-     #will need if/else statement for valid_placement?
-   end
-
-=======
     @taken_coordinates = []
   end
 
@@ -56,7 +43,6 @@ class Board
     @taken_coordinates << coordinates
     @taken_coordinates = @taken_coordinates.flatten
   end
->>>>>>> 6c90b1eb6eed4ea1faf35815f8b9177b6487b73a
 
   def make_board
     board = {}
@@ -81,14 +67,10 @@ class Board
     placements.each do |placement_let|
       placement_letter << placement_let[0].ord
     end
-<<<<<<< HEAD
-    if (placement_letter.uniq.count == 1 &&
-=======
 
     if (@taken_coordinates & placements).length >= 1
       false
     elsif (placement_letter.uniq.count == 1 &&
->>>>>>> 6c90b1eb6eed4ea1faf35815f8b9177b6487b73a
       placement_number.each_cons(2).all?{|x,y| y == x + 1}) &&
       (placements.length == ship_name.length)
       true
