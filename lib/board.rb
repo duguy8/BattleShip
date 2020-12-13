@@ -21,10 +21,16 @@ class Board
         line_2.concat(" S")
       elsif ship.coordinate.ord == 65
         line_2.concat(" .")
+      elsif (ship.coordinate.ord == 66 && ship.ship.nil? == false) && rendered == true
+        line_3.concat(" S")
       elsif ship.coordinate.ord == 66
         line_3.concat(" .")
+      elsif (ship.coordinate.ord == 67 && ship.ship.nil? == false) && rendered == true
+        line_4.concat(" S")
       elsif ship.coordinate.ord == 67
         line_4.concat(" .")
+      elsif (ship.coordinate.ord == 68 && ship.ship.nil? == false) && rendered == true
+        line_5.concat(" S")
       elsif ship.coordinate.ord == 68
         line_5.concat(" .")
       end
