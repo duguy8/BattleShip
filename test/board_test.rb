@@ -14,6 +14,10 @@ class BoardTest < MiniTest::Test
     # skip
     board = Board.new
     assert_equal 16, board.cells.count
+<<<<<<< HEAD
+  # require 'pry'; binding.pry
+=======
+>>>>>>> 6c90b1eb6eed4ea1faf35815f8b9177b6487b73a
   end
 
   def test_valid_coordinate_a1
@@ -47,7 +51,11 @@ class BoardTest < MiniTest::Test
   end
 
   def test_for_valid_placement_1
+<<<<<<< HEAD
+    #skip
+=======
     # skip
+>>>>>>> 6c90b1eb6eed4ea1faf35815f8b9177b6487b73a
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
@@ -55,7 +63,11 @@ class BoardTest < MiniTest::Test
   end
 
   def test_for_valid_placement_2
+<<<<<<< HEAD
+    #skip
+=======
     # skip
+>>>>>>> 6c90b1eb6eed4ea1faf35815f8b9177b6487b73a
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
