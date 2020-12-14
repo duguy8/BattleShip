@@ -39,7 +39,6 @@
   submarine = Ship.new("Submarine", 2)
   computer.randomly_placed_ship(submarine)
   counter = (computer.board.render(true).count "S")
-  # require "pry"; binding.pry
   assert_equal 2, counter
  end
 
@@ -51,7 +50,6 @@
   computer.randomly_placed_ship(submarine)
   computer.randomly_placed_ship(cruiser)
   counter = (computer.board.render(true).count "S")
-  require "pry"; binding.pry
   assert_equal 5, counter
  end
 end
