@@ -2,7 +2,7 @@ class Computer
   attr_reader :board
 
   def initialize
-    @board = (Board.new)
+    @board = Board.new
     @taken_coordinates = []
   end
 
