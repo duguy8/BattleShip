@@ -10,40 +10,35 @@ attr_reader :user, :opponent
     submarine = Ship.new("Submarine", 2)
     opponent.randomly_placed_ship(cruiser)
     opponent.randomly_placed_ship(submarine)
-    p "I have laid out my ships on the grid."
-    p "You now need to lay out your two ships."
-    p "The Cruiser is three units long and the Submarine is two units long."
-    puts (opponent.board.render)
-    p "Enter the squares for the Cruiser (3 spaces):"
-
+      p "I have laid out my ships on the grid."
+      p "You now need to lay out your two ships."
+      p "The Cruiser is three units long and the Submarine is two units long."
+      puts (opponent.board.render)
+      p "Enter the squares for the Cruiser (3 spaces):"
     cruiser_placement = gets.chomp
     placements = cruiser_placement.split
-    if user.board.valid_placement?(cruiser, placements) == false
-    p "Those are invalid coordinates. Please try again:"
-    cruiser_placement = gets.chomp
-    placements = cruiser_placement.split
-    else
-      user.board.place(cruiser, placements)
+    until user.board.valid_placement?(cruiser, placements) == true
+      p "Those are invalid coordinates. Please try again:"
+      cruiser_placement = gets.chomp
+      placements = cruiser_placement.split
     end
+    user.board.place(cruiser, placements)
     player_submarine_placement
   end
 
   def player_submarine_placement
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
-    puts (user.board.render(true))
-
-    p "Enter the squares for the Submarine (2 spaces):"
-
+      puts (user.board.render(true))
+      p "Enter the squares for the Submarine (2 spaces):"
     submarine_placement = gets.chomp
     placements = submarine_placement.split
-    if user.board.valid_placement?(submarine, placements) == false
+    until user.board.valid_placement?(submarine, placements) == true
       p "Those are invalid coordinates. Please try again:"
       submarine_placement = gets.chomp
       placements = submarine_placement.split
-    else
-      user.board.place(submarine, placements)
     end
+    user.board.place(submarine, placements)
     player_fire
   end
 
@@ -68,12 +63,20 @@ attr_reader :user, :opponent
   end
 
   def computer_fire
+    computer_shots = []
     random_shot = user.board.cells.keys.sample
-    until (opponent.board.valid_coordinate?(random_shot) == true) &&
-          (opponent.board.cells[random_shot].fired_upon? == false)
+    computer_shots.push(random_shot)
+
+    until (user.valid_coordinate?(random_shot) == true) &&
+          (user.board.cells[random_shot].fired_upon? == false)
       computer_fire
     end
     user.board.cells[random_shot].fire_upon
+    turn_results
     player_fire
+  end
+
+  def turn_results
+
   end
 end
