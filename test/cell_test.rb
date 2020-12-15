@@ -62,14 +62,14 @@ class CellTest < MiniTest::Test
   def test_cell_1_render
     #skip
     cell_1 = Cell.new("B4")
-    assert_equal ".", cell_1.render
+    assert_equal " .", cell_1.render
   end
 
   def test_cell_1_render_after_fired_upon
     #skip
     cell_1 = Cell.new("B4")
     cell_1.fire_upon
-    assert_equal "M", cell_1.render
+    assert_equal " M", cell_1.render
   end
 
   def test_place_ship_and_render_cell_2
@@ -78,7 +78,7 @@ class CellTest < MiniTest::Test
     cruiser = Ship.new("Cruiser", 3)
     cell_2.place_ship(cruiser)
     cell_2.render
-    assert_equal "S", cell_2.render(true)
+    assert_equal " S", cell_2.render(true)
   end
 
   def test_place_ship_and_render_cell_2_after_fired_upon
@@ -89,7 +89,7 @@ class CellTest < MiniTest::Test
     cell_2.render
     cell_2.render(true)
     cell_2.fire_upon
-    assert_equal "H", cell_2.render
+    assert_equal " H", cell_2.render
   end
 
   def test_ship_has_not_sunk
@@ -117,6 +117,6 @@ class CellTest < MiniTest::Test
     cruiser.hit
     # require 'pry'; binding.pry
     assert_equal true, cruiser.sunk?
-    assert_equal "X", cell_2.render
+    assert_equal " X", cell_2.render
   end
 end
