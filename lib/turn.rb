@@ -1,8 +1,13 @@
 class Turn
-attr_reader :user, :opponent
+attr_reader :user,
+            :opponent,
+            :user_coordinate,
+            :opp_coordinate
   def initialize(user, opponent)
     @user = user
     @opponent = opponent
+    @user_coordinate = []
+    @opp_coordinate = []
   end
 
   def player_ship_placement
@@ -51,6 +56,10 @@ attr_reader :user, :opponent
 
   def player_fire
     display_board
+    if @user_coordinate != nil
+      @user_coordinate.clear
+    else
+    end
     p 'Enter the coordinate for your shot:'
     coordinate = gets.chomp.upcase
     until (opponent.board.valid_coordinate?(coordinate) == true) &&
@@ -58,25 +67,50 @@ attr_reader :user, :opponent
       p 'Please enter a valid coordinate:'
       coordinate = gets.chomp.upcase
     end
+    @user_coordinate.push(coordinate)
     opponent.board.cells[coordinate].fire_upon
     computer_fire
   end
 
   def computer_fire
+    if @opp_coordinate != nil
+      @opp_coordinate.clear
+    else
+    end
     computer_shots = []
     random_shot = user.board.cells.keys.sample
-    computer_shots.push(random_shot)
-
-    until (user.valid_coordinate?(random_shot) == true) &&
-          (user.board.cells[random_shot].fired_upon? == false)
+      if computer_shots.include?(random_shot)
+        computer_fire
+      else
+      end
+    until (user.board.valid_coordinate?(random_shot) == true)
+          # (user.board.cells[random_shot].fired_upon? == false)
       computer_fire
     end
+    @opp_coordinate.push(random_shot)
+    computer_shots << user.board.cells[random_shot]
     user.board.cells[random_shot].fire_upon
     turn_results
     player_fire
   end
 
   def turn_results
+    if opponent.board.cells[@user_coordinate[0]].render == " M"
+      p "Your shot on #{@user_coordinate[0]} was a miss."
+    elsif opponent.board.cells[@user_coordinate[0]].render == " X"
+      p "You have sunk a ship!"
+    elsif opponent.board.cells[@user_coordinate[0]].render == " H"
+      p "Your shot on #{@user_coordinate[0]} was a hit."
+    else
+    end
 
+    if user.board.cells[@opp_coordinate[0]].render == " M"
+      p "My shot on #{@opp_coordinate[0]} was a miss."
+    elsif opponent.board.cells[@opp_coordinate[0]].render == " X"
+      p "You have sunk a ship!"
+    elsif opponent.board.cells[@opp_coordinate[0]].render == " H"
+      p "Your shot on #{@opp_coordinate[0]} was a hit."
+    else
+    end
   end
 end
