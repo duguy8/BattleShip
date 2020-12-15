@@ -53,7 +53,6 @@ class PlayerTest < MiniTest::Test
     submarine = Ship.new("Submarine", 2)
     player.place(cruiser, ["A1", "A2", "A3"])
     player.place(submarine, ["C1", "C2"])
-    require "pry"; binding.pry
     counter = (player.board.render(true).count "S")
     assert_equal 5, counter
   end
