@@ -1,6 +1,5 @@
 class Board
   attr_reader :cells
-
   def initialize
     @key_letter = ["A", "B", "C", "D"]
     @key_number = ["1", "2", "3", "4"]

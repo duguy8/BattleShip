@@ -1,7 +1,7 @@
 class Game
   def initialize
   end
-
+  
   def start
     p "Welcome to BATTLESHIP"
     p "Enter p to play. Enter q to quit."
@@ -23,5 +23,7 @@ class Game
       p "You won!"
     else
     end
+    gets.chomp
+    start
   end
 end
