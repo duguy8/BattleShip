@@ -11,4 +11,7 @@ submarine = Ship.new("Submarine", 2)
 player = Player.new
 computer = Computer.new
 turn = Turn.new(player, computer)
-game = Game.new
+game = Game.new(turn)
+
+game.start
+game.game_over
