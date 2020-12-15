@@ -19,6 +19,7 @@ class TurnTest < MiniTest::Test
     player = Player.new
     computer = Computer.new
     turn = Turn.new(player, computer)
+    turn.player_ship_placement
     assert_equal player, turn.user
     assert_equal computer, turn.opponent
   end
@@ -60,7 +61,7 @@ class TurnTest < MiniTest::Test
   end
 
   def test_computer_can_fire_and_miss
-    skip
+    # skip
     player = Player.new
     computer = Computer.new
     turn = Turn.new(player, computer)

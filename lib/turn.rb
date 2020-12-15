@@ -12,18 +12,34 @@ attr_reader :user, :opponent
     puts (opponent.board.render)
     p "Enter the squares for the Cruiser (3 spaces):"
 
+    cruiser = Ship.new("Cruiser", 3)
     cruiser_placement = gets.chomp
-    #need to validate placement & place ship
-    # if coordinates are invalid p "Those are invalid coordinates. Please try again:"
+    placements = cruiser_placement.split
+    if user.board.valid_placement?(cruiser, placements)
+      user.board.place(cruiser, placements)
+    else
+      p "Those are invalid coordinates. Please try again:"
+      gets.chomp
+      player_ship_placement
+    end
+    player_submarine_placement
+  end
 
+  def player_submarine_placement
     puts (user.board.render(true))
 
     p "Enter the squares for the Submarine (2 spaces):"
 
+    submarine = Ship.new("Submarine", 2)
     submarine_placement = gets.chomp
-    #need to valid placement & place ship
-    # if coordinates are invalid p "Those are invalid coordinates. Please try again:"
-
+    placements = submarine_placement.split
+    if user.board.valid_placement?(submarine, placements)
+      user.board.place(submarine, placements)
+    else
+      p "Those are invalid coordinates. Please try again:"
+      gets.chomp
+      player_submarine_placement
+    end
     display_board
   end
 
@@ -39,7 +55,7 @@ attr_reader :user, :opponent
   end
 
   def computer_fire
-    # random_coordinate = nil
-    # player.board.cells[random_coordinate].fire_upon
+    random_shot = user.board.cells.keys.sample
+    user.board.cells[random_shot].fire_upon
   end
 end
