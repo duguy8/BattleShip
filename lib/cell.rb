@@ -15,15 +15,15 @@ class Cell
 
   def render(rendered = true)
     if @fired_upon == true && @ship == nil
-      "M"
+      " M"
     elsif @fired_upon == true && @ship.sunk?
-      "X"
+      " X"
     elsif @fired_upon == true && @ship != nil
-      "H"
+      " H"
     elsif @empty == false
-      "S"
+      " S"
     else
-      "."
+      " ."
     end
   end
 

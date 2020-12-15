@@ -14,10 +14,6 @@ class BoardTest < MiniTest::Test
     # skip
     board = Board.new
     assert_equal 16, board.cells.count
-<<<<<<< HEAD
-  # require 'pry'; binding.pry
-=======
->>>>>>> 6c90b1eb6eed4ea1faf35815f8b9177b6487b73a
   end
 
   def test_valid_coordinate_a1
@@ -51,11 +47,7 @@ class BoardTest < MiniTest::Test
   end
 
   def test_for_valid_placement_1
-<<<<<<< HEAD
-    #skip
-=======
     # skip
->>>>>>> 6c90b1eb6eed4ea1faf35815f8b9177b6487b73a
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
@@ -63,11 +55,7 @@ class BoardTest < MiniTest::Test
   end
 
   def test_for_valid_placement_2
-<<<<<<< HEAD
-    #skip
-=======
     # skip
->>>>>>> 6c90b1eb6eed4ea1faf35815f8b9177b6487b73a
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
@@ -146,7 +134,6 @@ class BoardTest < MiniTest::Test
     cell_1 = board.cells["A1"]
     cell_2 = board.cells["A2"]
     cell_3 = board.cells["A3"]
-    # require "pry"; binding.pry
     assert_instance_of Ship, cell_1.ship
     assert_instance_of Ship, cell_2.ship
     assert_instance_of Ship, cell_3.ship
@@ -189,10 +176,16 @@ class BoardTest < MiniTest::Test
   end
 
   def test_for_hits_misses_and_sinks_1
-    skip
+    # skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
+    submarine = Ship.new("Submarine", 2)
     board.place(cruiser, ["A1", "A2", "A3"])
+    board.place(submarine, ["C1", "D1"])
+    board.cells["A1"].fire_upon
+    board.cells["B4"].fire_upon
+    board.cells["C1"].fire_upon
+    board.cells["D1"].fire_upon
     the_board = "  1 2 3 4 \n" +
                 "A H . . . \n" +
                 "B . . . M \n" +
@@ -202,10 +195,16 @@ class BoardTest < MiniTest::Test
   end
 
   def test_for_hits_misses_and_sinks_2
-    skip
+    # skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
+    submarine = Ship.new("Submarine", 2)
     board.place(cruiser, ["A1", "A2", "A3"])
+    board.place(submarine, ["C1", "D1"])
+    board.cells["A1"].fire_upon
+    board.cells["B4"].fire_upon
+    board.cells["C1"].fire_upon
+    board.cells["D1"].fire_upon
     the_board = "  1 2 3 4 \n" +
                 "A H S S . \n" +
                 "B . . . M \n" +
