@@ -17,10 +17,11 @@ class Game
   end
 
   def game_over
-    # if you win
-    #   p "You won!"
-    # else computer wins
-    #   p "I won!"
-    # end
+    if turn.user.board.render(true).count "S" == 0
+      p "I won!"
+    elsif turn.opponent.board.render(true).count "S" == 0
+      p "You won!"
+    else
+    end
   end
 end
