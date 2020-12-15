@@ -1,7 +1,9 @@
 class Game
-  def initialize
+  attr_reader :turn
+  def initialize(turn)
+    @turn = turn
   end
-  
+
   def start
     p "Welcome to BATTLESHIP"
     p "Enter p to play. Enter q to quit."
@@ -19,11 +21,10 @@ class Game
   def game_over
     if turn.user.board.render(true).count "S" == 0
       p "I won!"
-    elsif turn.opponent.board.render(true).count "S" == 0
+      start
+    else turn.opponent.board.render(true).count "S" == 0
       p "You won!"
-    else
+      start
     end
-    gets.chomp
-    start
   end
 end
