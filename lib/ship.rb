@@ -19,4 +19,5 @@ class Ship
       false
     end
   end
+
 end

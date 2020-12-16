@@ -72,6 +72,12 @@ class Board
     cells.has_key?(coordinate)
   end
 
+  def is_cell_empty?(placements)
+    placements.all? do |cell|
+      @cells[cell].empty?
+    end
+  end
+
   def valid_placement?(ship_name, placements)
     placement_number = []
     placement_letter = []

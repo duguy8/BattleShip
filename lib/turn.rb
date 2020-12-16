@@ -47,7 +47,7 @@ attr_reader :user,
 
   def display_board
     p '=============COMPUTER BOARD============='
-    puts (opponent.board.render)
+    puts (opponent.board.render(true))
     p '=============PLAYER BOARD============='
     puts (user.board.render(true))
   end
@@ -75,18 +75,26 @@ attr_reader :user,
   end
 
   def computer_fire
+    @shot_counter += 1
     if @opp_coordinate.length > 0
       @opp_coordinate.clear
     else
     end
-    random_shot = user.board.cells.keys.sample
     computer_shots = []
-    if computer_shots.include?(random_shot)
-      computer_fire
+    random_shot = user.board.cells.keys.sample
+    if @shot_counter == 1
+      computer_shots.push(random_shot)
+      @opp_coordinate.push(random_shot)
+      user.board.cells[random_shot].fire_upon
+    elsif @shot_counter > 1 && computer_shots.none?(random_shot)
+      random_shot = user.board.cells.keys.sample
+      computer_shots = []
+      computer_shots.push(random_shot)
+      @opp_coordinate.push(random_shot)
+      user.board.cells[random_shot].fire_upon
     else
+      computer_fire
     end
-    @opp_coordinate.push(random_shot)
-    user.board.cells[random_shot].fire_upon
     turn_results
     if user.player_game_over? == true
       @game_over = true
@@ -114,28 +122,4 @@ attr_reader :user,
     else
     end
   end
-
-  # def game_over
-  #   if user.board.render(true).count('S') == 0
-  #     true
-  #     p "I won!"
-  #   elsif opponent.board.render.count('X') == 5
-  #     true
-  #     p "You won!"
-  #   else
-  #     false
-  #   end
-  # end
-
-  # def game_over
-  #   if user.board.render(true).count('S') == 0
-  #     true
-  #     p "I won!"
-  #   elsif opponent.board.render.count('X') == 5
-  #     true
-  #     p "You won!"
-  #   else
-  #     false
-  #   end
-  # end
 end
