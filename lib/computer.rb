@@ -14,7 +14,21 @@ class Computer
       false
     end
   end
-
+  def randomly_place_cruiser
+    cruiser = Ship.new("Cruiser", 3)
+    cruiser_coordinates = []
+    3.times do
+      cruiser_coordinates.push(board.cells.keys.sample)
+    end
+    if board.valid_placement?(cruiser, cruiser_coordinates) == true
+      cruiser_coordinates.map do |coordinate|
+        @board.cells[coordinate].place_ship(cruiser)
+        @taken_coordinates << coordinate
+      end.flatten
+    else
+      randomly_place_cruiser
+    end
+  end
   def randomly_place_submarine
     submarine = Ship.new("Submarine", 2)
     sub_coordinates = []
@@ -31,20 +45,4 @@ class Computer
     end
     @taken_coordinates.clear
   end
-
-  def randomly_place_cruiser
-    cruiser = Ship.new("Cruiser", 3)
-    cruiser_coordinates = []
-    3.times do
-      cruiser_coordinates.push(board.cells.keys.sample)
-    end
-    if board.valid_placement?(cruiser, cruiser_coordinates) == true
-        cruiser_coordinates.map do |coordinate|
-        @board.cells[coordinate].place_ship(cruiser)
-        @taken_coordinates << coordinate
-      end.flatten
-      else
-        randomly_place_cruiser
-      end
-    end
-  end
+end

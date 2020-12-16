@@ -23,19 +23,6 @@ class Cell
       " ."
     end
   end
-  #
-  #   if (@fired_upon == true && empty == true)
-  #     " M"
-  #   elsif (@fired_upon == true && @ship.health == 0)
-  #     " X"
-  #   elsif (@fired_upon == true && @ship.health > 0)
-  #     " H"
-  #   elsif (rendered == true && @fired_upon == false)
-  #     " S"
-  #   else
-  #     " ."
-  #   end
-  # end
 
   def fire_upon
     @fired_upon = true
