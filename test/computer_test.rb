@@ -25,9 +25,7 @@
  def test_for_randomly_placed_cruiser
  # skip
   computer = Computer.new
-  cruiser = Ship.new("Cruiser", 3)
-  submarine = Ship.new("Submarine", 2)
-  computer.randomly_placed_ship(cruiser)
+  computer.randomly_place_cruiser
   counter = (computer.board.render(true).count "S")
   assert_equal 3, counter
  end
@@ -35,9 +33,7 @@
  def test_for_randomly_placed_submarine
  # skip
   computer = Computer.new
-  cruiser = Ship.new("Cruiser", 3)
-  submarine = Ship.new("Submarine", 2)
-  computer.randomly_placed_ship(submarine)
+  computer.randomly_place_submarine
   counter = (computer.board.render(true).count "S")
   assert_equal 2, counter
  end
@@ -45,10 +41,9 @@
  def test_for_randomly_placed_ships
  # skip
   computer = Computer.new
-  cruiser = Ship.new("Cruiser", 3)
-  submarine = Ship.new("Submarine", 2)
-  computer.randomly_placed_ship(submarine)
-  computer.randomly_placed_ship(cruiser)
+  computer.randomly_place_cruiser
+  computer.randomly_place_submarine
+  # require "pry"; binding.pry
   counter = (computer.board.render(true).count "S")
   assert_equal 5, counter
  end

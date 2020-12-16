@@ -11,10 +11,10 @@ attr_reader :user,
   end
 
   def player_ship_placement
-    cruiser = Ship.new("Cruiser", 3)
-    opponent.randomly_placed_ship(cruiser)
     submarine = Ship.new("Submarine", 2)
-    opponent.randomly_placed_ship(submarine)
+    cruiser = Ship.new("Cruiser", 3)
+    opponent.randomly_place_cruiser
+    opponent.randomly_place_submarine
       p "I have laid out my ships on the grid."
       p "You now need to lay out your two ships."
       p "The Cruiser is three units long and the Submarine is two units long."
@@ -32,7 +32,7 @@ attr_reader :user,
   end
 
   def player_submarine_placement
-    cruiser = Ship.new("Cruiser", 3)
+    # cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
       puts (user.board.render(true))
       p "Enter the squares for the Submarine (2 spaces):"

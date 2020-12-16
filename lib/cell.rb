@@ -11,14 +11,13 @@ class Cell
   end
 
   def render(rendered = true)
-
-    if @fired_upon == true && @ship.health <= 0
-      " X"
-    elsif @fired_upon == true && empty == true
+    if empty == true && @fired_upon == true
       " M"
-    elsif @fired_upon == true && @ship.health > 0
+    elsif (@fired_upon == true && @ship.sunk?) && @ship.health <= 0
+      " X"
+    elsif empty == false && @fired_upon == true
       " H"
-    elsif @fired_upon == false && rendered == true
+    elsif (empty == false && rendered == true) && @fired_upon == false
       " S"
     else
       " ."
