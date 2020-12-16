@@ -86,7 +86,11 @@ attr_reader :user,
     @opp_coordinate.push(random_shot)
     user.board.cells[random_shot].fire_upon
     turn_results
-    player_fire
+    if game_over == true
+      game.start
+    elsif game_over == false
+      player_fire
+    end
   end
 
   def turn_results
@@ -106,6 +110,18 @@ attr_reader :user,
     elsif opponent.board.cells[@opp_coordinate[0]].render == " H"
       p "My shot on #{@opp_coordinate[0]} was a hit."
     else
+    end
+  end
+
+  def game_over
+    if user.board.render(true).count('S') == 0
+      true
+      p "I won!"
+    elsif opponent.board.render(true).count('S') == 0
+      true
+      p "You won!"
+    else
+      false
     end
   end
 end

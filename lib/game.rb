@@ -18,13 +18,11 @@ class Game
     end
   end
 
-  def game_over
-    if turn.user.board.render(true).count "S" == 0
-      p "I won!"
-      start
-    else turn.opponent.board.render(true).count "S" == 0
-      p "You won!"
-      start
-    end
-  end
+  # def game_over
+  #   if turn.user.board.render(true).count "S" == 0
+  #     p "I won!"
+  #   else turn.opponent.board.render(true).count "S" == 0
+  #     p "You won!"
+  #   end
+  # end
 end
