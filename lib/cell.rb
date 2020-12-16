@@ -3,9 +3,6 @@ class Cell
               :empty,
               :fired_upon,
               :ship
-
-  # attr_accessor :ship
-
   def initialize(cell_coordinate)
     @coordinate = cell_coordinate
     @empty = true
@@ -14,18 +11,32 @@ class Cell
   end
 
   def render(rendered = true)
-    if @fired_upon == true && @ship == nil
-      " M"
-    elsif (@fired_upon == true && @ship.sunk?) && @ship.health <= 0
+
+    if @fired_upon == true && @ship.health <= 0
       " X"
-    elsif (@fired_upon == true && @ship != nil) && @ship.health < 3
+    elsif @fired_upon == true && empty == true
+      " M"
+    elsif @fired_upon == true && @ship.health > 0
       " H"
-    elsif rendered == true && @ship != nil
+    elsif @fired_upon == false && rendered == true
       " S"
     else
       " ."
     end
   end
+  #
+  #   if (@fired_upon == true && empty == true)
+  #     " M"
+  #   elsif (@fired_upon == true && @ship.health == 0)
+  #     " X"
+  #   elsif (@fired_upon == true && @ship.health > 0)
+  #     " H"
+  #   elsif (rendered == true && @fired_upon == false)
+  #     " S"
+  #   else
+  #     " ."
+  #   end
+  # end
 
   def fire_upon
     @fired_upon = true

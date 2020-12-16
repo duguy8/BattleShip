@@ -1,5 +1,6 @@
 class Board
-  attr_reader :cells
+  attr_reader :cells,
+              :taken_coordinates
   def initialize
     @key_letter = ["A", "B", "C", "D"]
     @key_number = ["1", "2", "3", "4"]
@@ -16,27 +17,27 @@ class Board
     line_5 = "D"
 
     @cells.each do |key, ship|
-      if ship.coordinate.ord == 65 && rendered == true
+      if ship.coordinate.ord == 65 && @cells[key].render != " S"
         line_2.concat(@cells[key].render)
-      elsif ship.coordinate.ord == 65 && @cells[key].render != " S"
+      elsif ship.coordinate.ord == 65 && rendered == true
         line_2.concat(@cells[key].render)
       elsif ship.coordinate.ord == 65
         line_2.concat(" .")
-      elsif ship.coordinate.ord == 66 && rendered == true
-        line_3.concat(@cells[key].render)
       elsif ship.coordinate.ord == 66 && @cells[key].render != " S"
+        line_3.concat(@cells[key].render)
+      elsif ship.coordinate.ord == 66 && rendered == true
         line_3.concat(@cells[key].render)
       elsif ship.coordinate.ord == 66
         line_3.concat(" .")
-      elsif ship.coordinate.ord == 67 && rendered == true
-        line_4.concat(@cells[key].render)
       elsif ship.coordinate.ord == 67 && @cells[key].render != " S"
+        line_4.concat(@cells[key].render)
+      elsif ship.coordinate.ord == 67 && rendered == true
         line_4.concat(@cells[key].render)
       elsif ship.coordinate.ord == 67
         line_4.concat(" .")
-      elsif ship.coordinate.ord == 68 && rendered == true
-        line_5.concat(@cells[key].render)
       elsif ship.coordinate.ord == 68 && @cells[key].render != " S"
+        line_5.concat(@cells[key].render)
+      elsif ship.coordinate.ord == 68 && rendered == true
         line_5.concat(@cells[key].render)
       elsif ship.coordinate.ord == 68
         line_5.concat(" .")
