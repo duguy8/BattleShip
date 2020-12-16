@@ -1,5 +1,6 @@
 require 'minitest/autorun'
 require 'minitest/pride'
+require 'mocha/minitest'
 require './lib/ship'
 require './lib/cell'
 require './lib/board'
@@ -65,6 +66,7 @@ class TurnTest < MiniTest::Test
     player = Player.new
     computer = Computer.new
     turn = Turn.new(player, computer)
+
     # require "pry"; binding.pry
     turn.player_ship_placement
     turn.computer_fire
