@@ -18,4 +18,13 @@ class Player
     else
     end
   end
+
+  def player_game_over?
+    if board.render(true).count('S') == 0
+      p "I won!"
+      true
+    else
+      false
+    end
+  end
 end
