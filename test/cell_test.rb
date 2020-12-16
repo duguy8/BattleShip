@@ -109,13 +109,13 @@ class CellTest < MiniTest::Test
     cell_2 = Cell.new("C3")
     cruiser = Ship.new("Cruiser", 3)
     cell_2.place_ship(cruiser)
+    # require 'pry'; binding.pry
     cell_2.render
     cell_2.render(true)
     cell_2.fire_upon
     cell_2.render
     cruiser.hit
     cruiser.hit
-    # require 'pry'; binding.pry
     assert_equal true, cruiser.sunk?
     assert_equal " X", cell_2.render
   end
