@@ -65,6 +65,7 @@ class TurnTest < MiniTest::Test
     player = Player.new
     computer = Computer.new
     turn = Turn.new(player, computer)
+    # require "pry"; binding.pry
     turn.player_ship_placement
     turn.computer_fire
     counter = (player.board.render(true).count "M")

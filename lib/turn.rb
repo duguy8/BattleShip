@@ -12,8 +12,8 @@ attr_reader :user,
 
   def player_ship_placement
     cruiser = Ship.new("Cruiser", 3)
-    submarine = Ship.new("Submarine", 2)
     opponent.randomly_placed_ship(cruiser)
+    submarine = Ship.new("Submarine", 2)
     opponent.randomly_placed_ship(submarine)
       p "I have laid out my ships on the grid."
       p "You now need to lay out your two ships."
@@ -56,7 +56,7 @@ attr_reader :user,
 
   def player_fire
     display_board
-    if @user_coordinate != nil
+    if @user_coordinate.length > 0
       @user_coordinate.clear
     else
     end
@@ -73,22 +73,17 @@ attr_reader :user,
   end
 
   def computer_fire
-    if @opp_coordinate != nil
+    if @opp_coordinate.length > 0
       @opp_coordinate.clear
     else
     end
-    computer_shots = []
     random_shot = user.board.cells.keys.sample
-      if computer_shots.include?(random_shot)
-        computer_fire
-      else
-      end
-    until (user.board.valid_coordinate?(random_shot) == true)
-          # (user.board.cells[random_shot].fired_upon? == false)
+    computer_shots = []
+    if computer_shots.include?(random_shot)
       computer_fire
+    else
     end
     @opp_coordinate.push(random_shot)
-    computer_shots << user.board.cells[random_shot]
     user.board.cells[random_shot].fire_upon
     turn_results
     player_fire
@@ -107,9 +102,9 @@ attr_reader :user,
     if user.board.cells[@opp_coordinate[0]].render == " M"
       p "My shot on #{@opp_coordinate[0]} was a miss."
     elsif opponent.board.cells[@opp_coordinate[0]].render == " X"
-      p "You have sunk a ship!"
+      p "I have sunk a ship!"
     elsif opponent.board.cells[@opp_coordinate[0]].render == " H"
-      p "Your shot on #{@opp_coordinate[0]} was a hit."
+      p "My shot on #{@opp_coordinate[0]} was a hit."
     else
     end
   end

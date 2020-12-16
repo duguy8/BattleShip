@@ -14,8 +14,6 @@ class CellTest < MiniTest::Test
   def test_you_can_place_ship
     #skip
     cell = Cell.new("B4")
-    # cruiser = Ship.new("Cruiser", 3)
-    # cruiser not needed for this test, better for speed
     assert_equal "B4", cell.coordinate
   end
 
@@ -43,6 +41,7 @@ class CellTest < MiniTest::Test
   end
 
   def test_if_ship_has_been_fired_upon_false
+    #skip
     cell = Cell.new("B4")
     cruiser = Ship.new("Cruiser", 3)
     cell.place_ship(cruiser)
@@ -109,7 +108,6 @@ class CellTest < MiniTest::Test
     cell_2 = Cell.new("C3")
     cruiser = Ship.new("Cruiser", 3)
     cell_2.place_ship(cruiser)
-    # require 'pry'; binding.pry
     cell_2.render
     cell_2.render(true)
     cell_2.fire_upon
