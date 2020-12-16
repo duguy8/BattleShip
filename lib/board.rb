@@ -72,6 +72,12 @@ class Board
     cells.has_key?(coordinate)
   end
 
+  def is_cell_empty?(placements)
+    placements.all? do |cell|
+      @cells[cell].empty?
+    end
+  end
+
   def valid_placement?(ship_name, placements)
     placement_number = []
     placement_letter = []
@@ -81,7 +87,6 @@ class Board
     placements.each do |placement_let|
       placement_letter << placement_let[0].ord
     end
-
     if (@taken_coordinates & placements).length >= 1
       false
     elsif (placement_letter.uniq.count == 1 &&

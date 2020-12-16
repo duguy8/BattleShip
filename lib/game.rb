@@ -23,7 +23,6 @@ class Game
       turn.opponent.randomly_place_cruiser
       turn.opponent.randomly_place_submarine
       turn.player_ship_placement
-      # turn.player_submarine_placement
       while turn.game_over == false
         turn.player_fire
         turn.computer_fire

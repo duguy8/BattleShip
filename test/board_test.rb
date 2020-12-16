@@ -11,43 +11,36 @@ class BoardTest < MiniTest::Test
   end
 
   def test_board_has_16_cells
-    # skip
     board = Board.new
     assert_equal 16, board.cells.count
   end
 
   def test_valid_coordinate_a1
-    # skip
     board = Board.new
     assert_equal true, board.valid_coordinate?("A1")
   end
 
   def test_valid_coordinate_d4
-    # skip
     board = Board.new
     assert_equal true, board.valid_coordinate?("D4")
   end
 
   def test_valid_coordinate_a5
-    # skip
     board = Board.new
     assert_equal false, board.valid_coordinate?("A5")
   end
 
   def test_valid_coordinate_e1
-    # skip
     board = Board.new
     assert_equal false, board.valid_coordinate?("E1")
   end
 
   def test_valid_coordinate_a22
-    # skip
     board = Board.new
     assert_equal false, board.valid_coordinate?("A22")
   end
 
   def test_for_valid_placement_1
-    # skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
@@ -55,7 +48,6 @@ class BoardTest < MiniTest::Test
   end
 
   def test_for_valid_placement_2
-    # skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
@@ -63,7 +55,6 @@ class BoardTest < MiniTest::Test
   end
 
   def test_coordinates_are_consecutive_1
-    # skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
@@ -71,7 +62,6 @@ class BoardTest < MiniTest::Test
   end
 
   def test_coordinates_are_consecutive_2
-    # skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
@@ -79,7 +69,6 @@ class BoardTest < MiniTest::Test
   end
 
   def test_coordinates_are_consecutive_3
-    # skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
@@ -87,7 +76,6 @@ class BoardTest < MiniTest::Test
   end
 
   def test_coordinates_are_consecutive_4
-    # skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
@@ -95,7 +83,6 @@ class BoardTest < MiniTest::Test
   end
 
   def test_coordinates_cannot_be_diagonal_1
-    # skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
@@ -103,7 +90,6 @@ class BoardTest < MiniTest::Test
   end
 
   def test_coordinates_cannot_be_diagonal_2
-    # skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
@@ -111,7 +97,6 @@ class BoardTest < MiniTest::Test
   end
 
   def test_that_placement_is_valid_1
-    # skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
@@ -119,7 +104,6 @@ class BoardTest < MiniTest::Test
   end
 
   def test_that_placement_is_valid_2
-    # skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
@@ -127,7 +111,6 @@ class BoardTest < MiniTest::Test
   end
 
   def test_ship_3_equals_ship_2
-    # skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     board.place(cruiser, ["A1", "A2", "A3"])
@@ -141,7 +124,6 @@ class BoardTest < MiniTest::Test
   end
 
   def test_ships_do_not_overlap
-    # skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     board.place(cruiser, ["A1", "A2", "A3"])
@@ -149,8 +131,22 @@ class BoardTest < MiniTest::Test
     assert_equal false, board.valid_placement?(submarine, ["A1", "B1"])
   end
 
+  def test_if_cell_is_empty_by_default
+    board = Board.new
+    cruiser = Ship.new("Cruiser", 3)
+    coordinates = ["A1", "A2", "A3"]
+    assert_equal true, board.is_cell_empty?(coordinates)
+  end
+
+  def test_if_cell_is_empty
+    board = Board.new
+    cruiser = Ship.new("Cruiser", 3)
+    board.place(cruiser, ["A1", "A2", "A3"])
+    coordinates = ["A1", "A2", "A3"]
+    assert_equal false, board.is_cell_empty?(coordinates)
+  end
+
   def test_render_works
-    # skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     board.place(cruiser, ["A1", "A2", "A3"])
@@ -163,7 +159,6 @@ class BoardTest < MiniTest::Test
   end
 
   def test_render_works_with_optional_argument
-    # skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     board.place(cruiser, ["A1", "A2", "A3"])
@@ -176,7 +171,6 @@ class BoardTest < MiniTest::Test
   end
 
   def test_for_hits_misses_and_sinks_1
-    # skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
@@ -195,7 +189,6 @@ class BoardTest < MiniTest::Test
   end
 
   def test_for_hits_misses_and_sinks_2
-    # skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
