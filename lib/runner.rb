@@ -14,4 +14,3 @@ turn = Turn.new(player, computer)
 game = Game.new(turn)
 
 game.start
-game.game_over
