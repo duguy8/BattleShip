@@ -87,7 +87,6 @@ class Board
     placements.each do |placement_let|
       placement_letter << placement_let[0].ord
     end
-
     if (@taken_coordinates & placements).length >= 1
       false
     elsif (placement_letter.uniq.count == 1 &&

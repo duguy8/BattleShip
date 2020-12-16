@@ -3,13 +3,15 @@ attr_reader :user,
             :opponent,
             :user_coordinate,
             :opp_coordinate,
-            :game_over
+            :game_over,
+            :shot_counter
   def initialize(user, opponent)
     @user = user
     @opponent = opponent
     @user_coordinate = []
     @opp_coordinate = []
     @game_over = false
+    @shot_counter = 0
   end
 
   def player_ship_placement
