@@ -8,12 +8,13 @@ class Computer
 
   def computer_game_over?
     if board.render.count('X') == 5
-      p "You won!"
+      p 'You won!'
       true
     else
       false
     end
   end
+
   def randomly_place_cruiser
     cruiser = Ship.new("Cruiser", 3)
     cruiser_coordinates = []
@@ -29,6 +30,7 @@ class Computer
       randomly_place_cruiser
     end
   end
+
   def randomly_place_submarine
     submarine = Ship.new("Submarine", 2)
     sub_coordinates = []

@@ -1,6 +1,7 @@
 class Board
   attr_reader :cells,
               :taken_coordinates
+              
   def initialize
     @key_letter = ["A", "B", "C", "D"]
     @key_number = ["1", "2", "3", "4"]

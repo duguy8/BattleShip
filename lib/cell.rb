@@ -3,6 +3,7 @@ class Cell
               :empty,
               :fired_upon,
               :ship
+              
   def initialize(cell_coordinate)
     @coordinate = cell_coordinate
     @empty = true

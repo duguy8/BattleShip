@@ -5,6 +5,7 @@ attr_reader :user,
             :opp_coordinate,
             :game_over,
             :shot_counter
+            
   def initialize(user, opponent)
     @user = user
     @opponent = opponent
@@ -16,15 +17,12 @@ attr_reader :user,
 
   def player_ship_placement
     cruiser = Ship.new("Cruiser", 3)
-      p "I have laid out my ships on the grid."
-      p "You now need to lay out your two ships."
-      p "The Cruiser is three units long and the Submarine is two units long."
       puts (opponent.board.render)
-      p "Enter the squares for the Cruiser (3 spaces):"
+      p 'Enter the squares for the Cruiser (3 spaces):'
     cruiser_placement = gets.chomp
     placements = cruiser_placement.split
     until user.board.valid_placement?(cruiser, placements) == true
-      p "Those are invalid coordinates. Please try again:"
+      p 'Those are invalid coordinates. Please try again:'
       cruiser_placement = gets.chomp
       placements = cruiser_placement.split
     end
@@ -35,7 +33,7 @@ attr_reader :user,
   def player_submarine_placement
     submarine = Ship.new("Submarine", 2)
       puts (user.board.render(true))
-      p "Enter the squares for the Submarine (2 spaces):"
+      p 'Enter the squares for the Submarine (2 spaces):'
     submarine_placement = gets.chomp
     placements = submarine_placement.split
     until user.board.valid_placement?(submarine, placements) == true
@@ -49,7 +47,7 @@ attr_reader :user,
 
   def display_board
     p '=============COMPUTER BOARD============='
-    puts (opponent.board.render(true))
+    puts (opponent.board.render)
     p '=============PLAYER BOARD============='
     puts (user.board.render(true))
   end
