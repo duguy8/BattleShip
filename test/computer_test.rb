@@ -12,7 +12,6 @@
  end
 
  def test_computer_can_have_a_board
- # skip
    computer = Computer.new
    computer_board = "  1 2 3 4 \n" +
                     "A . . . . \n" +
@@ -23,7 +22,6 @@
  end
 
  def test_for_randomly_placed_cruiser
- # skip
   computer = Computer.new
   computer.randomly_place_cruiser
   counter = (computer.board.render(true).count "S")
@@ -31,7 +29,6 @@
  end
 
  def test_for_randomly_placed_submarine
- # skip
   computer = Computer.new
   computer.randomly_place_submarine
   counter = (computer.board.render(true).count "S")
@@ -39,11 +36,9 @@
  end
 
  def test_for_randomly_placed_ships
- # skip
   computer = Computer.new
   computer.randomly_place_cruiser
   computer.randomly_place_submarine
-  # require "pry"; binding.pry
   counter = (computer.board.render(true).count "S")
   assert_equal 5, counter
  end

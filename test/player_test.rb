@@ -34,7 +34,6 @@ class PlayerTest < MiniTest::Test
   end
 
   def test_player_can_place_submarine
-    # skip
     player = Player.new
     submarine = Ship.new("Submarine", 2)
     player.place(submarine, ["A1", "A2"])
@@ -47,7 +46,6 @@ class PlayerTest < MiniTest::Test
   end
 
   def test_player_can_place_two_ships
-    # skip
     player = Player.new
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
@@ -55,5 +53,20 @@ class PlayerTest < MiniTest::Test
     player.place(submarine, ["C1", "C2"])
     counter = (player.board.render(true).count "S")
     assert_equal 5, counter
+  end
+
+  def test_player_can_win
+    player = Player.new
+    cruiser = Ship.new("Cruiser", 3)
+    cell_1 = Cell.new("A1")
+    cell_2 = Cell.new("A2")
+    cell_3 = Cell.new("A3")
+    cell_1.place_ship(cruiser)
+    cell_2.place_ship(cruiser)
+    cell_3.place_ship(cruiser)
+    cruiser.hit
+    cruiser.hit
+    cruiser.hit
+    assert_equal true, player.player_game_over?
   end
 end
